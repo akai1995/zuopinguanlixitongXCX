@@ -1,0 +1,91 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/works/index",
+      "style": {
+        "navigationBarTitleText": "个人作品"
+      }
+    },
+    {
+      "path": "pages/works/detail",
+      "style": {
+        "navigationBarTitleText": "作品详情"
+      }
+    },
+    {
+      "path": "pages/works/upload",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "上传作品"
+      }
+    },
+    {
+      "path": "pages/ai-images/index",
+      "style": {
+        "navigationBarTitleText": "AI生图"
+      }
+    },
+    {
+      "path": "pages/ai-images/detail",
+      "style": {
+        "navigationBarTitleText": "AI生图详情"
+      }
+    },
+    {
+      "path": "pages/ai-images/upload",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "添加AI生图"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "作品管理",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F7F7F7"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8C8C8C",
+    "selectedColor": "#1962EC",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/works/index",
+        "text": "作品"
+      },
+      {
+        "pagePath": "pages/ai-images/index",
+        "text": "AI生图"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
+  }
+}

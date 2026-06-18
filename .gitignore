@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+*.log
+
+# Build
+dist
+*.map
+
+# Editor
+.DS_Store
+*.swp
+*.swo
+*~
+*.tmp
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.idea
+
+# uni-app
+unpackage/
+*/npm.debug.log
+*.apk
+*.wgt
+*.dex
+
+# Env
+.env
+.env.local
+*.env.local

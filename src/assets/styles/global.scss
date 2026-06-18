@@ -1,0 +1,265 @@
+// ========================================
+// 作品管理系统 - 全局样式
+// ========================================
+
+// ---------- 修复浅色模式下底部黑色背景问题 ----------
+// 从最外层容器开始，确保所有层级都有正确的背景色
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: $bg-light !important;
+  touch-action: pan-y pinch-zoom;
+  
+  [data-theme='dark'] & {
+    background-color: $bg-dark !important;
+  }
+}
+
+// uni-app H5 端生成的各种容器
+#app,
+.uni-app,
+.uni-page,
+.uni-page-wrapper,
+.uni-page-body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-light !important;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  
+  [data-theme='dark'] & {
+    background-color: $bg-dark !important;
+  }
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-light !important;
+  
+  [data-theme='dark'] & {
+    background-color: $bg-dark !important;
+  }
+}
+
+// 自定义 tabBar 相关容器（.custom-tab-bar 保持透明以显示页面背景）
+.tab-bar-wrap,
+.uni-tabbar-wrap,
+.uni-tabbar,
+.uni-tabbar-bottom {
+  background-color: $bg-light !important;
+  
+  [data-theme='dark'] & {
+    background-color: $bg-dark !important;
+  }
+}
+
+// 隐藏原生底部 TabBar（H5端）
+.uni-tabbar,
+.uni-tabbar-bottom {
+  display: none !important;
+}
+
+// ---------- 顶部导航栏主题适配 ----------
+.uni-page-head {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='dark'] .uni-page-head,
+[data-theme='dark'] .uni-page-head-hd,
+[data-theme='dark'] .uni-page-head-bd,
+[data-theme='dark'] .uni-page-head-ft {
+  background-color: #141414 !important;
+  color: #DCDCDC !important;
+}
+
+[data-theme='dark'] .uni-page-head__title {
+  color: #DCDCDC !important;
+}
+
+[data-theme='dark'] .uni-page-head .uni-page-head-btn {
+  color: #DCDCDC !important;
+}
+
+[data-theme='dark'] .uni-page-head-btn svg path {
+  fill: #DCDCDC !important;
+}
+
+page {
+  @include bg-page;
+  font-family: $font-family;
+  font-size: $font-size-body;
+  line-height: $line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---------- 通用重置 ----------
+view, text, scroll-view, image, button, input, textarea {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ---------- 通用容器 ----------
+.page-container {
+  min-height: 100vh;
+  padding: $spacing-md $spacing-md 0;
+  @include safe-padding-bottom;
+}
+
+// ---------- 模块标题区域 ----------
+.section-header {
+  @include flex-between;
+  padding: $spacing-md 0 $spacing-sm;
+  
+  &__title {
+    @include font-card-title;
+  }
+  
+  &__more {
+    @include font-caption;
+    color: $color-primary;
+  }
+}
+
+// ---------- 统计卡片网格 ----------
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: 16px;
+}
+
+// ---------- 作品网格 ----------
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-sm;
+}
+
+// ---------- 空状态 ----------
+.empty-state {
+  @include flex-center;
+  flex-direction: column;
+  padding: 48px 0;
+  
+  &__icon {
+    font-size: 48px;
+    margin-bottom: $spacing-md;
+    opacity: 0.3;
+  }
+  
+  &__text {
+    @include font-caption;
+  }
+}
+
+// ---------- 加载状态 ----------
+.loading-container {
+  @include flex-center;
+  padding: 32px 0;
+}
+
+// ---------- 遮罩层 ----------
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+// ---------- 滚动容器 ----------
+.scroll-container {
+  height: 100vh;
+}
+
+// ---------- 安全区域底部 ----------
+.safe-bottom {
+  padding-bottom: $safe-bottom;
+}
+
+// ---------- 图片上传组件必填星号样式 ----------
+.image-uploader__required,
+.image-uploader__required span,
+.form__required,
+.form__required span {
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #ff4d4f !important;
+}
+
+// ========================================
+// 页面切换动画
+// ========================================
+
+// 页面基础动画容器
+.page-transition-wrapper {
+  min-height: 100vh;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity $page-transition-duration $page-transition-ease,
+              transform $page-transition-duration $page-transition-ease;
+  will-change: opacity, transform;
+  
+  &.page-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  &.page-leaving {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.98);
+    transition: opacity 300ms ease-in,
+                transform 300ms ease-in;
+  }
+}
+
+// 页面内容交错动画
+.page-content-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+    
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{60 + ($i - 1) * 40}ms;
+      }
+    }
+  }
+  
+  &.page-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 卡片列表交错进入动画
+.card-list-stagger {
+  > * {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+    transition: opacity 500ms cubic-bezier(0.32, 0.72, 0, 1),
+                transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    
+    @for $i from 1 through 30 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{80 + ($i - 1) * 50}ms;
+      }
+    }
+  }
+  
+  &.page-visible > * {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
