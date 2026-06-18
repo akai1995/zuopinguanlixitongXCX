@@ -271,8 +271,8 @@ onMounted(() => {
   position: fixed;
   right: $spacing-lg;
   bottom: calc(#{$tab-height} + #{$safe-bottom} + 28px);
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: $radius-round;
   background: $color-primary;
   @include flex-center;
