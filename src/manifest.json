@@ -7,7 +7,10 @@
   "transformPx": false,
   "h5": {
     "devServer": {},
-    "title": "作品管理系统"
+    "title": "作品管理系统",
+    "router": {
+      "base": "/zuopinguanlixitongXCX/"
+    }
   },
   "uniStatistics": {
     "enable": false

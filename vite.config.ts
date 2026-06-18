@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [uni()],
+  base: '/zuopinguanlixitongXCX/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src')
